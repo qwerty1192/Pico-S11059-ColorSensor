@@ -14,7 +14,7 @@ int main() {
 
     while (1) {
         s11059_read_data(&red,&green,&blue,&ir);
-        printf("%d,%d,%d,%d\n",red,green,blue,ir);
+        printf("RED:%d GREEN:%d BLUE:%d IR:%d\n",red,green,blue,ir);
         sleep_ms(800);
     }
 }
