@@ -11,21 +11,11 @@ struct S11059_Settings {
     // 0: LOW gain, 1: HIGH gain
     uint8_t gain;
 
-    // 0: fixed_time, 1: manual_setting
-    uint8_t integration_mode;
-
-    // fixed_time_mode:
-    //   00:87.5us, 01:1.4ms, 10:22.4ms, 11:179.2ms
-    // manual_setting_mode:
-    //   00:175*Nus, 01:2.8*Nms, 10:44.8*Nms, 11:358.4*Nms
-    uint8_t integration_time_mode;
-
-    // N: 0x0000-0xFFFF
-    // use only integration_mode=1
-    uint16_t manual_setting_time;
+    // 0b00:87.5us, 0b01:1.4ms, 0b10:22.4ms, 0b11:179.2ms
+    uint8_t integration_time;
 };
 
-void s11059_init() {
+void s11059_init(S11059_Settings *settings) {
     i2c_init(S11059_i2c, 100 * 1000);
     gpio_set_function(S11059_SDA_PIN, GPIO_FUNC_I2C);
     gpio_set_function(S11059_SCL_PIN, GPIO_FUNC_I2C);
@@ -36,9 +26,18 @@ void s11059_init() {
 
     uint8_t buf[2];
     buf[0] = 0x00;
-    buf[1] = 0b10001011;
+    buf[1] = 0b10000000 | ((settings->gain<<3) & 0b1000) | (settings->integration_time & 0b11);
     i2c_write_blocking(S11059_i2c,S11059_address,buf,2,false);
-    buf[1] = 0b00001011;
+    buf[1] = ((settings->gain<<3) & 0b1000) | (settings->integration_time & 0b11);
+    i2c_write_blocking(S11059_i2c,S11059_address,buf,2,false);
+}
+
+void s11059_write_settings(S11059_Settings *settings) {
+    uint8_t buf[2];
+    buf[0] = 0x00;
+    buf[1] = 0b10000000 | ((settings->gain<<3) & 0b1000) | (settings->integration_time & 0b11);
+    i2c_write_blocking(S11059_i2c,S11059_address,buf,2,false);
+    buf[1] = 0b00000000 | ((settings->gain<<3) & 0b1000) | (settings->integration_time & 0b11);
     i2c_write_blocking(S11059_i2c,S11059_address,buf,2,false);
 }
 
