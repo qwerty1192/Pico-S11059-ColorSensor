@@ -29,5 +29,12 @@ int main() {
         sleep_ms(1000);
         s11059_read_data(&red,&green,&blue,&ir);
         printf("LOW GAIN : RED:%d GREEN:%d BLUE:%d IR:%d\n",red,green,blue,ir);
+
+        printf("RED:   %d\n", s11059_read_data_red());
+        printf("GREEN: %d\n", s11059_read_data_green());
+        printf("BLUE:  %d\n", s11059_read_data_blue());
+        printf("IR:    %d\n", s11059_read_data_ir());
+
+        sleep_ms(1000);
     }
 }
