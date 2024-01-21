@@ -10,10 +10,11 @@ int main() {
 
     s11059_init();
     
-    uint16_t red,green,blue;
+    uint16_t red,green,blue,ir;
 
     while (1) {
-        s11059_read_data(&red,&green,&blue);
-        printf("%d,%d,%d\n",red,green,blue);
+        s11059_read_data(&red,&green,&blue,&ir);
+        printf("%d,%d,%d,%d\n",red,green,blue,ir);
+        sleep_ms(800);
     }
 }
