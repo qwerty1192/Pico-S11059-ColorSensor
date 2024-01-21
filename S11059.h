@@ -34,3 +34,35 @@ void s11059_read_data(uint16_t *red, uint16_t *green, uint16_t *blue, uint16_t *
     *blue  = buf[4]<<8 | buf[5];
     *ir    = buf[6]<<8 | buf[7];
 }
+
+uint16_t s11059_read_data_red() {
+    uint8_t reg = 0x03;
+    uint8_t buf[8];
+    i2c_write_blocking(S11059_i2c,S11059_address,&reg,1,true);
+    i2c_read_blocking(S11059_i2c,S11059_address,buf,2,false);
+    return buf[0]<<8 | buf[1];
+}
+
+uint16_t s11059_read_data_green() {
+    uint8_t reg = 0x05;
+    uint8_t buf[8];
+    i2c_write_blocking(S11059_i2c,S11059_address,&reg,1,true);
+    i2c_read_blocking(S11059_i2c,S11059_address,buf,2,false);
+    return buf[0]<<8 | buf[1];
+}
+
+uint16_t s11059_read_data_blue() {
+    uint8_t reg = 0x07;
+    uint8_t buf[8];
+    i2c_write_blocking(S11059_i2c,S11059_address,&reg,1,true);
+    i2c_read_blocking(S11059_i2c,S11059_address,buf,2,false);
+    return buf[0]<<8 | buf[1];
+}
+
+uint16_t s11059_read_data_ir() {
+    uint8_t reg = 0x09;
+    uint8_t buf[8];
+    i2c_write_blocking(S11059_i2c,S11059_address,&reg,1,true);
+    i2c_read_blocking(S11059_i2c,S11059_address,buf,2,false);
+    return buf[0]<<8 | buf[1];
+}
