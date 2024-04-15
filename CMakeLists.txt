@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.12)
 
 include(pico_sdk_import.cmake)
 
-project(S11059 C CXX ASM)
+project(test C CXX ASM)
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
 
@@ -15,10 +15,10 @@ add_compile_options(-Wall
         )
 
 add_executable(${PROJECT_NAME}
-        example.cpp
+        test.c
         )
 
-target_link_libraries(${PROJECT_NAME} pico_stdlib hardware_i2c)
+target_link_libraries(${PROJECT_NAME} pico_stdlib hardware_i2c hardware_adc)
 
 pico_add_extra_outputs(${PROJECT_NAME})
 
