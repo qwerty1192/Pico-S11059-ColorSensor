@@ -15,7 +15,7 @@ add_compile_options(-Wall
         )
 
 add_executable(${PROJECT_NAME}
-        test.c
+        example.cpp
         )
 
 target_link_libraries(${PROJECT_NAME} pico_stdlib hardware_i2c hardware_adc)
