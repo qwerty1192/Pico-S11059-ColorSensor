@@ -18,7 +18,7 @@ add_executable(${PROJECT_NAME}
         example.cpp
         )
 
-target_link_libraries(${PROJECT_NAME} pico_stdlib hardware_i2c hardware_adc)
+target_link_libraries(${PROJECT_NAME} pico_stdlib hardware_i2c)
 
 pico_add_extra_outputs(${PROJECT_NAME})
 
