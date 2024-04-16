@@ -18,7 +18,7 @@ typedef struct
     uint8_t integration_time;
 } S11059_Settings;
 
-void s11059_init(i2c_inst_t *bus, S11059_Settings *settings)
+void s11059_init(i2c_inst_t *bus)
 {
     i2c_init(bus, 200 * 1000);
 
