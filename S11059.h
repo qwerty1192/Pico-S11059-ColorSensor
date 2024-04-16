@@ -55,7 +55,6 @@ void s11059_write_settings(S11059_Settings *settings) {
     i2c_write_blocking(S11059_i2c_2,S11059_address,buf,2,false);
 }
 
-<<<<<<< HEAD
 void s11059_read_data(uint16_t *red, uint16_t *green, uint16_t *blue, uint16_t *ir, uint8_t Select_Sensor) {
     uint8_t reg = 0x03;
     uint8_t buf[8];
@@ -66,24 +65,6 @@ void s11059_read_data(uint16_t *red, uint16_t *green, uint16_t *blue, uint16_t *
         i2c_write_blocking(S11059_i2c_2,S11059_address,&reg,1,true);
         i2c_read_blocking(S11059_i2c_2,S11059_address,buf,8,false);
     }
-=======
-void s11059_read_data(uint16_t *red, uint16_t *green, uint16_t *blue, uint16_t *ir) {
-    uint8_t reg = 0x03;
-    uint8_t buf[8];
-    i2c_write_blocking(S11059_i2c,S11059_address,&reg,1,true);
-    i2c_read_blocking(S11059_i2c,S11059_address,buf,8,false);
-    *red   = buf[0]<<8 | buf[1];
-    *green = buf[2]<<8 | buf[3];
-    *blue  = buf[4]<<8 | buf[5];
-    *ir    = buf[6]<<8 | buf[7];
-}
-
-void s11059_read_data_2(uint16_t *red, uint16_t *green, uint16_t *blue, uint16_t *ir) {
-    uint8_t reg = 0x03;
-    uint8_t buf[8];
-    i2c_write_blocking(S11059_i2c_2,S11059_address,&reg,1,true);
-    i2c_read_blocking(S11059_i2c_2,S11059_address,buf,8,false);
->>>>>>> origin/use-2-sensor-on-1-mcu
     *red   = buf[0]<<8 | buf[1];
     *green = buf[2]<<8 | buf[3];
     *blue  = buf[4]<<8 | buf[5];
