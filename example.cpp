@@ -12,8 +12,8 @@ int main()
     sleep_ms(1000);
 
     S11059_Settings settings;
-    settings.gain = 1;
-    settings.integration_time = 0b01;
+    settings.gain = S11059_HIGH_GAIN;
+    settings.integration_time = S11059_INTEGRATION_TIME_179_2ms;
 
     s11059_init(S11059_I2C_BUS);
     s11059_write_settings(S11059_I2C_BUS, &settings);
