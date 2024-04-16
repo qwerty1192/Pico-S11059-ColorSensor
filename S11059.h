@@ -3,11 +3,17 @@
 
 #define S11059_I2C0_SDA 4
 #define S11059_I2C0_SCL 5
-
 #define S11059_I2C1_SDA 6
 #define S11059_I2C1_SCL 7
 
 #define S11059_address 0x2A
+
+#define S11059_LOW_GAIN  0
+#define S11059_HIGH_GAIN 1
+
+#define S11059_INTEGRATION_TIME_87_5us  0b00
+#define S11059_INTEGRATION_TIME_1_4ms   0b01
+#define S11059_INTEGRATION_TIME_22_4ms  0b10
 
 typedef struct
 {
