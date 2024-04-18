@@ -16,11 +16,11 @@ uint8_t color_read_data(uint8_t Select_Sensor){
     uint16_t red,green,blue,ir;
 
     s11059_read_data(&red,&green,&blue,&ir,Select_Sensor);
-    //printf("%d %d %d\n",red,green,blue);
+    printf("%d %d %d ",red,green,blue);
 
-    if(red > 250 && green < 250 && blue < 250){
+    if(red > 250 && green < 200 && blue < 200){
         dat = 1;
-    }else if(red < 150 && green > 150 && blue > 250){
+    }else if(red < 150 && green > 150 && blue > 230){
         dat = 2;
     }else if(red > 300 && green > 300 && blue < 200){
         dat = 3;
